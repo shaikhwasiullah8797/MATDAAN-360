@@ -67,7 +67,11 @@ export default function StateWiseUpdates() {
         </div>
       </div>
 
-      <div className="grid gap-6" style={{ 
+      <div 
+        className="grid gap-6" 
+        role="region"
+        aria-live="polite"
+        style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
         justifyContent: 'center'
@@ -131,7 +135,7 @@ export default function StateWiseUpdates() {
 
       {filteredStates.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-muted">No states found matching "{searchTerm}"</p>
+          <p className="text-muted">No states found matching &quot;{searchTerm}&quot;</p>
         </div>
       )}
 

@@ -63,7 +63,7 @@ export default function RegisterPage() {
           <p className="mb-6 text-muted">Direct links to the Election Commission of India (ECI) official services.</p>
           <div className="flex flex-wrap gap-4">
             <a href="https://voters.eci.gov.in/" target="_blank" rel="noreferrer" className="btn btn-primary" aria-label="Visit ECI Voter Portal">
-              National Voter's Service Portal
+              National Voter&apos;s Service Portal
             </a>
             <a href="https://voterportal.eci.gov.in/" target="_blank" rel="noreferrer" className="btn btn-secondary" aria-label="Voter Portal for Mobile">
               Voter Portal (Beta)

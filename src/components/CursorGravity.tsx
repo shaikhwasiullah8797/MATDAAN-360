@@ -45,15 +45,15 @@ export default function CursorGravity() {
       }
 
       update() {
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let maxDistance = 150;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 150;
+        const force = (maxDistance - distance) / maxDistance;
+        const directionX = forceDirectionX * force * this.density;
+        const directionY = forceDirectionY * force * this.density;
 
         if (distance < maxDistance && mouse.active) {
           // Antigravity: push away
@@ -62,11 +62,11 @@ export default function CursorGravity() {
         } else {
           // Return to base position
           if (this.x !== this.baseX) {
-            let dx = this.x - this.baseX;
+            const dx = this.x - this.baseX;
             this.x -= dx / 10;
           }
           if (this.y !== this.baseY) {
-            let dy = this.y - this.baseY;
+            const dy = this.y - this.baseY;
             this.y -= dy / 10;
           }
         }
@@ -79,9 +79,9 @@ export default function CursorGravity() {
       const colors = ['#FF9933', '#FFFFFF', '#138808']; // Saffron, White, Green
 
       for (let i = 0; i < numberOfParticles; i++) {
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        let color = colors[Math.floor(Math.random() * colors.length)];
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const color = colors[Math.floor(Math.random() * colors.length)];
         particles.push(new Particle(x, y, color));
       }
     };

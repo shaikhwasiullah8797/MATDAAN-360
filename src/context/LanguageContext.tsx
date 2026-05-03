@@ -20,7 +20,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
     const savedLang = localStorage.getItem('language') as Language;
     if (savedLang && dictionaries[savedLang]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+       
       setLanguageState(savedLang);
     }
   }, []);

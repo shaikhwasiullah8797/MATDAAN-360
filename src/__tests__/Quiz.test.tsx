@@ -25,10 +25,24 @@ describe('Quiz Component', () => {
     expect(screen.getByText(/What is the voting age in India?/i)).toBeInTheDocument();
   });
 
-  it('updates score when correct answer is clicked', () => {
+  it('updates score and shows result after last question', async () => {
+    jest.useFakeTimers();
     renderWithLanguage(<Quiz questions={sampleQuestions} />);
     const correctOption = screen.getByText(/18/i);
     fireEvent.click(correctOption);
-    expect(screen.getByText(/Score: 1/i)).toBeInTheDocument();
+    
+    // Fast-forward 1 second for the timeout
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+    
+    expect(await screen.findByText(/Quiz Completed!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Your Score:/i)).toBeInTheDocument();
+    
+    // Test reset
+    const restartButton = screen.getByText(/Restart Quiz/i);
+    fireEvent.click(restartButton);
+    expect(await screen.findByText(/What is the voting age in India?/i)).toBeInTheDocument();
+    jest.useRealTimers();
   });
 });

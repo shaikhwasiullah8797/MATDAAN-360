@@ -22,6 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <a href="#main-content" className="sr-only focus:not-sr-only" style={{ position: 'absolute', zIndex: 9999, background: 'white', padding: '1rem', color: 'var(--navy)', fontWeight: 'bold' }}>
+          Skip to content
+        </a>
         <LanguageProvider>
           <div className="hero-bg">
             <div 
@@ -35,7 +38,7 @@ export default function RootLayout({
           </div>
           <CursorGravity />
           <Navbar />
-          <main style={{ position: 'relative', zIndex: 5 }}>
+          <main id="main-content" style={{ position: 'relative', zIndex: 5 }}>
             {children}
           </main>
         </LanguageProvider>

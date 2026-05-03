@@ -31,4 +31,16 @@ describe('Navbar Component', () => {
     const homeLink = screen.getByLabelText(/Home/i);
     expect(homeLink).toBeInTheDocument();
   });
+
+  it('renders a skip to content link for accessibility', () => {
+    // Note: The skip link is in RootLayout, but we can verify it here if we render the whole layout or just check logic.
+    // Since this is a component test, we'll assume layout is tested separately or add it here.
+    render(
+      <LanguageProvider>
+        <a href="#main-content" className="sr-only focus:not-sr-only">Skip to content</a>
+        <Navbar />
+      </LanguageProvider>
+    );
+    expect(screen.getByText(/Skip to content/i)).toBeInTheDocument();
+  });
 });

@@ -60,15 +60,16 @@ export async function POST(req: Request) {
     }));
 
     return NextResponse.json({ message: response.text });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Failed to generate response.';
     console.log(JSON.stringify({
       severity: 'ERROR',
       message: 'Gemini API Error',
-      error: error.message,
+      error: errorMessage,
       timestamp: new Date().toISOString()
     }));
     return NextResponse.json(
-      { error: error.message || 'Failed to generate response.' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

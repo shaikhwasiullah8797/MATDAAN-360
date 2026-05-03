@@ -19,6 +19,7 @@
 
   --text-main: #0B1021; /* Deep navy almost black for ultra contrast */
   --text-muted: #334155;
+  --text-saffron: #CC7A29; /* Darker saffron for better contrast on white */
   
   --bg-main: #FFFFFF;
   --bg-card: rgba(255, 255, 255, 0.95);
@@ -92,7 +93,7 @@ ul {
 }
 
 .text-center { text-align: center; }
-.text-saffron { color: var(--saffron); }
+.text-saffron { color: var(--text-saffron); }
 .text-green { color: var(--green); }
 .text-navy { color: var(--navy); }
 .text-white { color: var(--white); }
