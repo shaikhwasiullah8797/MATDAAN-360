@@ -16,6 +16,10 @@ export default function Flashcard({ frontContent, backContent }: FlashcardProps)
     <div 
       className={`flip-card ${isFlipped ? 'flipped' : ''}`} 
       onClick={() => setIsFlipped(!isFlipped)}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsFlipped(!isFlipped)}
+      tabIndex={0}
+      role="button"
+      aria-label="Flashcard: Click to reveal answer"
       style={{ width: '100%', maxWidth: '400px', height: '250px', margin: '1rem auto' }}
     >
       <div className="flip-card-inner">

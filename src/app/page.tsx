@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import StateWiseUpdates from "@/components/StateWiseUpdates";
+
+const StateWiseUpdates = dynamic(() => import("@/components/StateWiseUpdates"), { 
+  ssr: false,
+  loading: () => <div className="h-40 animate-pulse bg-white/20 rounded-xl" />
+});
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -103,27 +108,27 @@ export default function Home() {
           
           <div className="grid gap-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
             {/* Service 1: Find Polling Booth */}
-            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 hover-scale text-center border-t-4 border-saffron group" style={{ textDecoration: 'none' }}>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" aria-label={language === 'hi' ? 'अपना बूथ खोजें' : 'Find Your Booth'} className="glass-panel p-6 hover-scale text-center border-t-4 border-saffron group" style={{ textDecoration: 'none' }}>
               <div className="w-16 h-16 mx-auto bg-saffron/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-saffron/20 transition-colors">
-                <span style={{ fontSize: '2rem' }}>📍</span>
+                <span aria-hidden="true" style={{ fontSize: '2rem' }}>📍</span>
               </div>
               <h3 className="text-navy mb-2" style={{ fontSize: '1.2rem' }}>{language === 'hi' ? 'अपना बूथ खोजें' : language === 'pa' ? 'ਆਪਣਾ ਬੂਥ ਲੱਭੋ' : 'Find Your Booth'}</h3>
               <p className="text-muted text-sm">{language === 'hi' ? 'अपने मतदान केंद्र का पता और विवरण जानें।' : language === 'pa' ? 'ਆਪਣੇ ਪੋਲਿੰਗ ਸਟੇਸ਼ਨ ਦਾ ਪਤਾ ਅਤੇ ਵੇਰਵੇ ਜਾਣੋ।' : 'Locate your exact polling station and address.'}</p>
             </a>
 
             {/* Service 2: Download Voter Slip */}
-            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 hover-scale text-center border-t-4 border-green group" style={{ textDecoration: 'none' }}>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" aria-label={language === 'hi' ? 'वोटर स्लिप डाउनलोड करें' : 'Download Voter Slip'} className="glass-panel p-6 hover-scale text-center border-t-4 border-green group" style={{ textDecoration: 'none' }}>
               <div className="w-16 h-16 mx-auto bg-green/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-green/20 transition-colors">
-                <span style={{ fontSize: '2rem' }}>📄</span>
+                <span aria-hidden="true" style={{ fontSize: '2rem' }}>📄</span>
               </div>
               <h3 className="text-navy mb-2" style={{ fontSize: '1.2rem' }}>{language === 'hi' ? 'वोटर स्लिप डाउनलोड करें' : language === 'pa' ? 'ਵੋਟਰ ਸਲਿੱਪ ਡਾਊਨਲੋਡ ਕਰੋ' : 'Download Voter Slip'}</h3>
               <p className="text-muted text-sm">{language === 'hi' ? 'मतदान के दिन के लिए अपनी आधिकारिक ई-वोटर स्लिप प्राप्त करें।' : language === 'pa' ? 'ਵੋਟਿੰਗ ਵਾਲੇ ਦਿਨ ਲਈ ਆਪਣੀ ਅਧਿਕਾਰਤ ਈ-ਵੋਟਰ ਸਲਿੱਪ ਪ੍ਰਾਪਤ ਕਰੋ।' : 'Get your official e-voter slip for election day.'}</p>
             </a>
 
             {/* Service 3: Know Your Candidate */}
-            <a href="https://affidavit.eci.gov.in/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 hover-scale text-center border-t-4 border-navy group" style={{ textDecoration: 'none' }}>
+            <a href="https://affidavit.eci.gov.in/" target="_blank" rel="noopener noreferrer" aria-label={language === 'hi' ? 'अपने उम्मीदवार को जानें' : 'Know Your Candidate'} className="glass-panel p-6 hover-scale text-center border-t-4 border-navy group" style={{ textDecoration: 'none' }}>
               <div className="w-16 h-16 mx-auto bg-navy/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-navy/20 transition-colors">
-                <span style={{ fontSize: '2rem' }}>👤</span>
+                <span aria-hidden="true" style={{ fontSize: '2rem' }}>👤</span>
               </div>
               <h3 className="text-navy mb-2" style={{ fontSize: '1.2rem' }}>{language === 'hi' ? 'अपने उम्मीदवार को जानें' : language === 'pa' ? 'ਆਪਣੇ ਉਮੀਦਵਾਰ ਨੂੰ ਜਾਣੋ' : 'Know Your Candidate'}</h3>
               <p className="text-muted text-sm">{language === 'hi' ? 'अपने क्षेत्र के उम्मीदवारों के हलफनामे और पृष्ठभूमि की जाँच करें।' : language === 'pa' ? 'ਆਪਣੇ ਖੇਤਰ ਦੇ ਉਮੀਦਵਾਰਾਂ ਦੇ ਹਲਫਨਾਮੇ ਅਤੇ ਪਿਛੋਕੜ ਦੀ ਜਾਂਚ ਕਰੋ।' : 'Check affidavits and backgrounds of candidates in your area.'}</p>

@@ -15,6 +15,9 @@ export default function MapModal({ isOpen, onClose, stateName }: MapModalProps) 
     <div 
       className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-navy/20 backdrop-blur-md animate-fade-in"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
       style={{ background: 'rgba(0, 0, 128, 0.3)' }}
     >
       <div 
@@ -24,17 +27,19 @@ export default function MapModal({ isOpen, onClose, stateName }: MapModalProps) 
       >
         <button 
           onClick={onClose}
+          aria-label="Close Modal"
           className="absolute top-4 right-4 text-navy hover:text-saffron transition-colors"
           style={{ fontSize: '1.5rem', fontWeight: 'bold' }}
         >
           ✕
         </button>
         
-        <h2 className="text-navy mb-4 text-center">{stateName} Election Map</h2>
+        <h2 id="modal-title" className="text-navy mb-4 text-center">{stateName} Election Map</h2>
         <p className="text-center text-muted mb-6">Interactive visualization of constituencies and voting booths.</p>
         
         <div className="relative rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50 z-0" style={{ height: '400px' }}>
           <iframe
+            title={`${stateName} Election Map`}
             width="100%"
             height="100%"
             style={{ border: 0 }}

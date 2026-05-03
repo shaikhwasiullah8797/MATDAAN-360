@@ -22,19 +22,19 @@ export default function Navbar() {
         {/* Left side: Links */}
         <div className="flex items-center gap-8" style={{ flexWrap: 'wrap' }}>
           <div className="flex items-center gap-4">
-            <Link href="/register" className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navRegister}</Link>
-            <Link href="/chat" className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navChat}</Link>
-            <Link href="/learn" className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navLearn}</Link>
+            <Link href="/register" aria-label={t.navRegister} className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navRegister}</Link>
+            <Link href="/chat" aria-label={t.navChat} className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navChat}</Link>
+            <Link href="/learn" aria-label={t.navLearn} className="text-sm font-semibold text-navy hover:text-white hover:bg-saffron px-4 py-2 rounded-full" style={{ transition: 'all 0.3s', whiteSpace: 'nowrap' }}>{t.navLearn}</Link>
           </div>
         </div>
 
         {/* Right side: Language Switcher and App Name */}
         <div className="flex items-center gap-6">
           <LanguageSwitcher />
-          <Link href="/" className="flex items-center gap-2 hover-scale" style={{ fontWeight: '900', fontSize: '1.25rem', marginLeft: '0.5rem' }}>
-            <span className="text-saffron">●</span>
+          <Link href="/" aria-label="Home" className="flex items-center gap-2 hover-scale" style={{ fontWeight: '900', fontSize: '1.25rem', marginLeft: '0.5rem' }}>
+            <span aria-hidden="true" className="text-saffron">●</span>
             <span className="text-navy" style={{ whiteSpace: 'nowrap', textShadow: '0 2px 4px rgba(255,255,255,0.8)', letterSpacing: '1px' }}>{t.appName}</span>
-            <span className="text-green">●</span>
+            <span aria-hidden="true" className="text-green">●</span>
           </Link>
         </div>
 

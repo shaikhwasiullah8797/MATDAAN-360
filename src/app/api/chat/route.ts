@@ -39,14 +39,34 @@ export async function POST(req: Request) {
       });
     }
 
+    // Structured logging for Google Cloud Logging
+    console.log(JSON.stringify({
+      severity: 'INFO',
+      message: 'Processing chat request',
+      language,
+      messageCount: messages.length,
+      timestamp: new Date().toISOString()
+    }));
+
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: contents,
     });
 
+    console.log(JSON.stringify({
+      severity: 'INFO',
+      message: 'Chat response generated successfully',
+      timestamp: new Date().toISOString()
+    }));
+
     return NextResponse.json({ message: response.text });
   } catch (error: any) {
-    console.error('Gemini API Error:', error);
+    console.log(JSON.stringify({
+      severity: 'ERROR',
+      message: 'Gemini API Error',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    }));
     return NextResponse.json(
       { error: error.message || 'Failed to generate response.' },
       { status: 500 }

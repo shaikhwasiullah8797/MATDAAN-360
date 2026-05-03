@@ -14,6 +14,7 @@ export default function LanguageSwitcher() {
         value={language} 
         onChange={(e) => setLanguage(e.target.value as Language)}
         className="glass-panel"
+        aria-label="Select Language"
         style={{ 
           padding: '0.25rem 0.5rem', 
           border: '1px solid var(--glass-border)',

@@ -50,6 +50,7 @@ export default function StateWiseUpdates() {
         <input 
           type="text" 
           placeholder={t.searchState} 
+          aria-label={t.searchState}
           className="w-full p-4 glass-panel border-none outline-none focus:ring-2 text-navy"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -115,6 +116,7 @@ export default function StateWiseUpdates() {
               <span className="text-xs text-muted font-medium">📅 {state.date}</span>
               <button 
                 className="text-xs font-bold text-navy hover:text-saffron transition-colors flex items-center gap-1"
+                aria-label={`View election map for ${state.name}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedState(state.name);

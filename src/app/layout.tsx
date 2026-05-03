@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import CursorGravity from "@/components/CursorGravity";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -10,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Indian Voter Companion AI",
   description: "Your multilingual AI guide to the Indian electoral process.",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -37,6 +39,7 @@ export default function RootLayout({
             {children}
           </main>
         </LanguageProvider>
+        <GoogleAnalytics gaId="G-DEMO-ID" />
       </body>
     </html>
   );
