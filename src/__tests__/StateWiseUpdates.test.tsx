@@ -14,13 +14,13 @@ const renderWithLanguage = (ui: React.ReactElement) => {
 describe('StateWiseUpdates Component', () => {
   it('renders the search input', async () => {
     renderWithLanguage(<StateWiseUpdates />);
-    const searchInput = await screen.findByPlaceholderText(/Search State/i);
+    const searchInput = await screen.findByRole('textbox');
     expect(searchInput).toBeInTheDocument();
   });
 
   it('filters states based on search term', async () => {
     renderWithLanguage(<StateWiseUpdates />);
-    const searchInput = await screen.findByPlaceholderText(/Search State/i);
+    const searchInput = await screen.findByRole('textbox');
     
     // Search for Punjab
     fireEvent.change(searchInput, { target: { value: 'Punjab' } });
@@ -34,7 +34,7 @@ describe('StateWiseUpdates Component', () => {
 
   it('shows no results message when no match is found', async () => {
     renderWithLanguage(<StateWiseUpdates />);
-    const searchInput = await screen.findByPlaceholderText(/Search State/i);
+    const searchInput = await screen.findByRole('textbox');
     
     fireEvent.change(searchInput, { target: { value: 'NonExistentState' } });
     
